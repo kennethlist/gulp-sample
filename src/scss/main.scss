@@ -1,0 +1,35 @@
+$primary-color: #333;
+$secondary-color: #fff;
+@mixin breakpoint($class) {
+     @if $class == xs{
+        @media (max-width: 767px) {
+             @content;
+        }
+    }
+    @else if $class == sm {
+         @media (max-width: 991px){
+            @content;
+        }
+    }
+    @else if $class == md {
+         @media (max-width: 1199px){
+            @content;
+        }
+    }
+    @else if $class == lg {
+         @media (min-width: 1200px){
+            @content;
+        }
+    }
+    @else {
+         @warn"Breakpoint mixin supports: xs, sm, md, lg";
+    }
+}
+body {
+    background: $primary-color;
+    color: $secondary-color;
+    @include breakpoint(lg) {
+        background: $secondary-color;
+        color: $primary-color;
+    }
+}
